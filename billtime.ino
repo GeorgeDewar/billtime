@@ -3,19 +3,38 @@
 
 rgb_lcd lcd;
 
+unsigned long lastSecond = 0;
+unsigned int seconds = 0;
+unsigned int minutes = 0;
+unsigned int hours = 0;
+
 void setup() {
     // set up the LCD's number of columns and rows:
     lcd.begin(16, 2);
-    // Print a message to the LCD.
-    lcd.print("hello, world!");
 }
 
 void loop() {
-    // Turn off the display:
-    lcd.noDisplay();
-    delay(500);
-    // Turn on the display:
-    lcd.display();
-    delay(500);
+    if(millis() - lastSecond > 1000)
+    {
+        lastSecond += 1000;
+        seconds++;
+    }
+  
+    if(seconds > 60){
+        seconds = 0;
+        minutes++; 
+    }
+    
+    if(minutes > 60){
+        minutes = 0;
+        hours++; 
+    }
+  
+    lcd.setCursor(0,0);
+    lcd.print(hours);
+    lcd.print(":");
+    lcd.print(minutes);
+    lcd.print(":");
+    lcd.print(seconds);
 }
 
