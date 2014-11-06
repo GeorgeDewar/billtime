@@ -30,6 +30,15 @@ void loop() {
   checkForButtonPress();
   updateTime();
   displayTime();
+  updateColor();
+}
+
+// Sets the backlight colour based on the current time
+void updateColor(){
+   if(seconds % 2 == 0)
+     lcd.setRGB(51,237,33);
+   else
+     lcd.setRGB(245,245,17);
 }
 
 // Checks if a button event has occurred, and updates the time accordingly if so
