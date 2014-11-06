@@ -4,7 +4,7 @@ billtime
 Billtime is an Arduino app to help you congratulate Bill on his many years at Datacom.
 
 If you have a Bill in your life who needs congratulating (perhaps because he is leaving 
-work after nearly 10 years), you need Billtime.
+work after nearly 10 awesome years), you need Billtime.
 
 Simply connect a Grove LCD to your IDC bus, and a button to digital pin 5. The button allows you to set the time, with a short press incrementing the minutes and a long press incrementing the hours.
 
