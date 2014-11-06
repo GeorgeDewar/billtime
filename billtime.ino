@@ -32,9 +32,14 @@ void loop() {
   
     lcd.setCursor(0,0);
     lcd.print(hours);
-    lcd.print(":");
+    lcd.print(" hours, ");
     lcd.print(minutes);
-    lcd.print(":");
+    lcd.print(" mins");
+    lcd.setCursor(0,1);
+    lcd.print("and ");
     lcd.print(seconds);
+    lcd.print(".");
+    lcd.print((millis() - lastSecond) / 100);
+    lcd.print(" seconds ");
 }
 
