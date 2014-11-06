@@ -20,12 +20,12 @@ void loop() {
         seconds++;
     }
   
-    if(seconds > 60){
+    if(seconds > 59){
         seconds = 0;
         minutes++; 
     }
     
-    if(minutes > 60){
+    if(minutes > 59){
         minutes = 0;
         hours++; 
     }
