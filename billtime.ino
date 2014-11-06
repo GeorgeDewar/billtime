@@ -27,6 +27,13 @@ void setup() {
 }
 
 void loop() {
+  checkForButtonPress();
+  updateTime();
+  displayTime();
+}
+
+// Checks if a button event has occurred, and updates the time accordingly if so
+void checkForButtonPress(){
   int event = handleButton();
   
   // Check if button pressed
@@ -38,7 +45,10 @@ void loop() {
       hours++;
       break;
   }
+}
 
+// Increments the seconds, minutes and hours if a new second has occurred
+void updateTime(){
   if(millis() - lastSecond > 1000)
   {
     lastSecond += 1000;
@@ -54,7 +64,10 @@ void loop() {
     minutes = 0;
     hours++; 
   }
+}
 
+// Prints the current time values on the LCD
+void displayTime(){
   lcd.setCursor(0,0);
   lcd.print(hours);
   lcd.print(" hours, ");
@@ -68,6 +81,7 @@ void loop() {
   lcd.print(" seconds ");
 }
 
+// Determines if a short or long press has occurred
 int handleButton()
 {
   int event;
