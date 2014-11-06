@@ -31,14 +31,7 @@ void loop() {
   updateTime();
   displayTime();
   updateColor();
-}
-
-// Sets the backlight colour based on the current time
-void updateColor(){
-   if(seconds % 2 == 0)
-     lcd.setRGB(51,237,33);
-   else
-     lcd.setRGB(245,245,17);
+  doBillTime();
 }
 
 // Checks if a button event has occurred, and updates the time accordingly if so
@@ -82,12 +75,33 @@ void displayTime(){
   lcd.print(" hours, ");
   lcd.print(minutes);
   lcd.print(" mins");
-  lcd.setCursor(0,1);
-  lcd.print("and ");
-  lcd.print(seconds);
-  lcd.print(".");
-  lcd.print((millis() - lastSecond) / 100);
-  lcd.print(" seconds ");
+  if(!isBillTime()){
+    lcd.setCursor(0,1);
+    lcd.print("and ");
+    lcd.print(seconds);
+    lcd.print(".");
+    lcd.print((millis() - lastSecond) / 100);
+    lcd.print(" seconds ");
+  }
+}
+
+// Sets the backlight colour based on the current time
+void updateColor(){
+   if(seconds % 10 < 5)
+     lcd.setRGB(51,237,33);
+   else
+     lcd.setRGB(245,245,17);
+}
+
+boolean isBillTime(){
+  return seconds % 20 < 2;
+}
+
+void doBillTime(){
+  if(isBillTime()){
+    lcd.setCursor(0,1);
+    lcd.print(" CONGRATS BILL! "); 
+  }
 }
 
 // Determines if a short or long press has occurred
